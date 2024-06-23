@@ -9,7 +9,7 @@ COPY pom.xml /app
 RUN mvn -f /app/pom.xml clean package
 
 # deploy to tomcat server
-FROM tomcat:9.0.44
+FROM arm64v8/tomcat:9.0-jdk11
 COPY --from=build app/target/simplewebapp.war /usr/local/tomcat/webapps
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
